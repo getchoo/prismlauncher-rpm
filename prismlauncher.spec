@@ -35,15 +35,12 @@ Version:          10.0.5
 Release:          %autorelease
 # See COPYING.md for more information
 # Each file in the source tree also contains a SPDX-License-Identifier header
-License:          GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND OFL-1.1 AND LGPL-2.1 AND MIT AND BSD-3-Clause
+License:          GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND LGPL-2.1 AND OFL-1.1 AND MIT
 Group:            Amusements/Games
-Summary:          Minecraft launcher with ability to manage multiple instances
+Summary:          Custom Minecraft Launcher to easily manage multiple installations at once
 Source:           https://github.com/PrismLauncher/PrismLauncher/releases/download/%{version}/PrismLauncher-%{version}.tar.gz
 URL:              https://prismlauncher.org/
 
-BuildRequires:    cmake >= 3.22
-BuildRequires:    ninja-build
-BuildRequires:    extra-cmake-modules
 %if "%{toolchain}" == "gcc"
 BuildRequires:    gcc-c++
 %endif
@@ -51,6 +48,7 @@ BuildRequires:    gcc-c++
 BuildRequires:    clang
 BuildRequires:    lld
 %endif
+
 # JDKs less than the most recent release & LTS are no longer in the default
 # Fedora repositories
 # Make sure you have Adoptium's repositories enabled
@@ -61,8 +59,10 @@ BuildRequires:    temurin-17-jdk
 %else
 BuildRequires:    java-17-openjdk-devel
 %endif
-BuildRequires:    desktop-file-utils
-BuildRequires:    libappstream-glib
+
+BuildRequires:    cmake >= 3.22
+BuildRequires:    ninja-build
+BuildRequires:    extra-cmake-modules
 
 BuildRequires:    pkgconfig(gamemode)
 BuildRequires:    pkgconfig(libarchive)
@@ -88,10 +88,14 @@ BuildRequires:    cmake(Qt%{qt_version}Test) >= %{min_qt_version}
 BuildRequires:    cmake(Qt%{qt_version}Widgets) >= %{min_qt_version}
 BuildRequires:    cmake(Qt%{qt_version}Xml) >= %{min_qt_version}
 
+BuildRequires:    desktop-file-utils
+BuildRequires:    libappstream-glib
+
 Requires:         qt%{qt_version}-qtimageformats
 Requires:         qt%{qt_version}-qtsvg
 
 Requires:         javapackages-filesystem
+Recommends:       java-25-openjdk
 Recommends:       java-21-openjdk
 # See note above
 %if 0%{?fedora} && 0%{?fedora} < 42
