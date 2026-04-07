@@ -106,7 +106,7 @@ Suggests:         java-1.8.0-openjdk
 # Used to gather GPU with `lspci`
 Requires:         pciutils
 # Ditto, but with `glxinfo`
-Requires:         mesa-demos
+Requires:         glx-utils
 
 # Needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
 Recommends:       xrandr
