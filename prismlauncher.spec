@@ -31,7 +31,7 @@
 %endif
 
 Name:             prismlauncher
-Version:          10.0.5
+Version:          11.0.0
 Release:          %autorelease
 # See COPYING.md for more information
 # Each file in the source tree also contains a SPDX-License-Identifier header
@@ -64,6 +64,7 @@ BuildRequires:    cmake >= 3.22
 BuildRequires:    ninja-build
 BuildRequires:    extra-cmake-modules
 
+BuildRequires:    cmake(VulkanHeaders)
 BuildRequires:    pkgconfig(gamemode)
 BuildRequires:    pkgconfig(libarchive)
 BuildRequires:    pkgconfig(libcmark)
@@ -105,18 +106,12 @@ Suggests:         java-1.8.0-openjdk
 
 # Used to gather GPU with `lspci`
 Requires:         pciutils
-# Ditto, but with `glxinfo`
-Requires:         mesa-demos
-
 # Needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
 Recommends:       xrandr
 # Needed for using narrator in minecraft
 Recommends:       flite
 # The launcher supports enabling gamemode
 Suggests:         gamemode
-
-# Added 2024-10-20
-Obsoletes:        prismlauncher-qt5 < 9.0-1
 
 %description
 A custom launcher for Minecraft that allows you to easily manage
@@ -173,7 +168,7 @@ appstream-util validate-relax --nonet \
 %{_datadir}/applications/org.prismlauncher.PrismLauncher.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.prismlauncher.PrismLauncher.svg
 %{_datadir}/icons/hicolor/256x256/apps/org.prismlauncher.PrismLauncher.png
-%{_datadir}/mime/packages/modrinth-mrpack-mime.xml
+%{_datadir}/mime/packages/org.prismlauncher.PrismLauncher.xml
 %{_datadir}/qlogging-categories?/prismlauncher.categories
 %{_mandir}/man?/prismlauncher.*
 %{_metainfodir}/org.prismlauncher.PrismLauncher.metainfo.xml
