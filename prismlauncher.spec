@@ -13,7 +13,7 @@
 
 # Set the Qt version
 %global qt_version 6
-%global min_qt_version 6.2
+%global min_qt_version 6.4
 
 # Give the launcher our build platform
 %global build_platform unknown
@@ -31,7 +31,7 @@
 %endif
 
 Name:             prismlauncher
-Version:          11.0.0
+Version:          11.0.1
 Release:          %autorelease
 # See COPYING.md for more information
 # Each file in the source tree also contains a SPDX-License-Identifier header
