@@ -1,9 +1,10 @@
 %bcond_with toolchain_clang
+%bcond_with toolchain_gcc
 
-%if %{with toolchain_clang}
-%global toolchain clang
-%else
+%if %{with toolchain_gcc}
 %global toolchain gcc
+%else
+%global toolchain clang
 %endif
 
 # Change these variables if you want to use custom keys
